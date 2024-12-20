@@ -1,14 +1,16 @@
 from telegram.ext import ApplicationBuilder, MessageHandler
 from telegram import Update
 from telegram.ext import ContextTypes, filters
+import os  # استيراد مكتبة os للحصول على المنفذ من البيئة
 
 # ضع رمز الـ API الخاص بك هنا
 TOKEN = "6243650306:AAHSCTWLd2nNQhTtFOIfhH2puFqU3eVUzcA"
 
 # الدالة التي تتعامل مع الرسائل
 async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    reply = "https://t.me/mena_support تواصل هنا فقط"
-    await update.message.reply_text(reply)
+    if update.message:  # تحقق من وجود رسالة
+        reply = "https://t.me/mena_support تواصل هنا فقط"
+        await update.message.reply_text(reply)
 
 # إعداد البوت
 def main():
@@ -19,7 +21,14 @@ def main():
     app.add_handler(MessageHandler(filters.TEXT, auto_reply))
 
     print("البوت يعمل الآن...")
-    app.run_polling()
+
+    # الحصول على المنفذ من البيئة
+    port = int(os.environ.get('PORT', 8443))
+    app.run_webhook(
+        listen="0.0.0.0",
+        port=port,
+        webhook_url=f"https://your-app-name.onrender.com/{TOKEN}"
+    )
 
 if __name__ == "__main__":
     main()
