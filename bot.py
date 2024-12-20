@@ -18,16 +18,18 @@ def main():
     app = ApplicationBuilder().token(TOKEN).build()
 
     # إضافة معالج للرسائل النصية
-    app.add_handler(MessageHandler(filters.TEXT, auto_reply))
+    app.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), auto_reply))
 
     print("البوت يعمل الآن...")
 
     # الحصول على المنفذ من البيئة
     port = int(os.environ.get('PORT', 8443))
+
+    # إعداد Webhook
     app.run_webhook(
         listen="0.0.0.0",
         port=port,
-        webhook_url=f"https://your-app-name.onrender.com/{TOKEN}"
+        webhook_url=f"https://bot.onrender.com/{TOKEN}"  # الرابط المعدّل ليطابق اسم تطبيقك
     )
 
 if __name__ == "__main__":
