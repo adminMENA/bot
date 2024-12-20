@@ -20,11 +20,12 @@ def main():
     port = int(os.environ.get('PORT', 8888))
 
     # إعداد Webhook
-    app.run_webhook(
-        listen="0.0.0.0",
-        port=port,
-        webhook_url=f"https://bot-gdg8.onrender.com/{TOKEN}" 
-    )
+  app.run_webhook(
+    listen="0.0.0.0",
+    port=int(os.environ.get('PORT', 8443)),
+    webhook_url=f"https://bot-gdg8.onrender.com/{TOKEN}"
+)
+
 
 if __name__ == "__main__":
     main()
