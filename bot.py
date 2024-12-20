@@ -23,7 +23,7 @@ def main():
     app.run_webhook(
         listen="0.0.0.0",
         port=port,
-        webhook_url=f"https://bot-gdg8.onrender.com/{TOKEN}" 
+        webhook_url=f"https://bot-gdg8.onrender.com/<TOKEN>" 
     )
 
 if __name__ == "__main__":
