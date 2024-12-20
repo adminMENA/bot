@@ -4,7 +4,7 @@ from telegram.ext import ContextTypes, filters
 import os
 
 # ضع رمز الـ API الخاص بك هنا
-TOKEN = "6243650306:AAHSCTWLd2nNQhTtFOIfhH2puFqU3eVUzcA"
+TOKEN = "6243650306:AAHRhh8k5Hp_0jx6w5xQ274dNW1fJGHAJr4"
 
 # الدالة التي تتعامل مع الرسائل
 async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
